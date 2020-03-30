@@ -1,0 +1,51 @@
+<?php
+
+namespace DummyNamespace\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Validator;
+use DummyNamespace\Interfaces\DummyClassRepositoryInterface;
+use DummyNamespace\Models\DummyClass;
+
+class DummyClassResourceController extends Controller
+{
+	protected $repository;
+
+	public function __construct(DummyClassRepositoryInterface $repository)
+	{
+		$this->middleware('auth:admin');
+		$this->repository = $repository;
+	}
+
+	public function index(Request $request)
+	{
+
+	}
+
+	public function create(Request $request)
+	{
+
+	}
+
+	public function store(Request $request)
+	{
+	 
+	}
+
+	public function edit(Request $request, DummyClass $data)
+	{
+	  
+	}
+
+	public function update(Request $request, DummyClass $data)
+	{
+	  
+	}
+
+	public function delete(Request $request, DummyClass $data)
+	{
+
+	}
+
+}

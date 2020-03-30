@@ -1,0 +1,35 @@
+{
+    "name": "master/upload",
+    "description": "master upload for dexa",
+    "keywords": ["master"],
+    "license": "MIT",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Natanael Kristiawan",
+            "email": "natanaelkristiawan@maxsol.id"
+        }
+    ],
+    "require": {
+        "intervention/image": "^2.4",
+        "intervention/imagecache": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Master\\Upload\\": ["src"]
+        },
+        "classmap": [ "src" ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Master\\Upload\\UploadServiceProvider",
+                "Master\\Upload\\ImageServiceProvider"
+            ],
+            "aliases": {
+                "Upload"      : "Master\\Upload\\Facades\\Upload"
+            }
+        }
+    },
+    "minimum-stability": "dev"
+}

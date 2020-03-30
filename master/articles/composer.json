@@ -1,0 +1,21 @@
+{
+    "name": "master/articles",
+    "description": "This module additional",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Master\\Articles\\": "src"
+        },
+        "classmap": [ "src" ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Master\\Articles\\ArticlesServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev"
+}

@@ -1,0 +1,18 @@
+<?php
+
+namespace DummyNamespace\Repositories\Presenter;
+
+use League\Fractal\TransformerAbstract;
+
+class DummyClassTransformer extends TransformerAbstract
+{
+	public function transform(\DummyNamespace\Models\DummyClass $model)
+	{
+		return [
+			'id'   => $model->id,
+			'name' => $model->name,
+			'status'=> '',
+			'action'=> ''
+		];
+	}
+}

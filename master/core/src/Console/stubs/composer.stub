@@ -1,0 +1,21 @@
+{
+    "name": "DummyNamecomposer",
+    "description": "This module additional",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "DummyNamespace\": "src"
+        },
+        "classmap": [ "src" ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "DummyServiceprovider"
+            ]
+        }
+    },
+    "minimum-stability": "dev"
+}

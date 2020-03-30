@@ -1,0 +1,16 @@
+<?php
+
+namespace DummyNamespace\Models;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class DummyClass extends Model 
+{
+	use SoftDeletes;
+	protected $table = 'DummyModuleName';
+	protected $fillable = [
+		'name',
+		'slug',
+		'status',
+	];
+}

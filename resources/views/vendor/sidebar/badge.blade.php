@@ -1,0 +1,1 @@
+<span class="float-right label {{ $badge->getClass() }}">{{ $badge->getValue() }}</span>

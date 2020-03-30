@@ -1,0 +1,70 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Support\ServiceProvider;
+
+class DummyClassServiceProvider extends ServiceProvider
+{
+
+	protected $defer = false;
+
+	public function boot()
+	{
+		// Load view
+		$this->loadViewsFrom(__DIR__ . '/../resources/views', 'DummyModuleName');
+		// Load migrations
+		$this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+
+		$this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'DummyModuleName');
+
+		// Call pblish redources function
+		$this->publishResources();
+
+	}
+
+	/**
+	* Register the service provider.
+	*
+	* @return void
+	*/
+	public function register()
+	{
+		$this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'DummyModuleFacade');
+
+		// Bind facade
+		$this->app->bind('DummyModuleFacade', function ($app) {
+		return $this->app->make('DummyFacadeNamespace');
+		});   
+
+		// Bind article to repository
+		$this->app->bind(
+		'DummyNamespace\Interfaces\DummyClassRepositoryInterface',
+		\DummyNamespace\Repositories\Eloquent\DummyClassRepository::class
+		);
+
+		$this->app->register(\DummyNamespace\Providers\RouteServiceProvider::class);
+	}
+
+
+	public function provides()
+	{
+		return ['DummyModuleFacade'];
+	}
+
+
+	private function publishResources()
+	{
+		// Publish configuration file
+		$this->publishes([__DIR__ . '/../config/config.php' => config_path('Mastervel/DummyModuleName.php')], 'config');
+
+		// Publish admin view
+		$this->publishes([__DIR__ . '/../resources/views' => base_path('resources/views/vendor/DummyModuleName')], 'view');
+
+		// Publish storage files
+		$this->publishes([__DIR__ . '/../storage' => base_path('storage')], 'storage');
+
+		// Publish public files and assets.
+		$this->publishes([__DIR__ . '/../public/' => public_path('/')], 'public');
+	}
+}

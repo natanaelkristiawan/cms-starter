@@ -1,0 +1,14 @@
+<?php
+
+$route->group(['prefix' => env('ADMIN_URL', 'admin')], function ($route) {
+	$route->group(['middleware' => ['admin']], function ($route) {
+		$route->group(['prefix' => 'DummyModuleName'], function($route) {
+			$route->get('/', 'DummyClassResourceController@index')->name('admin.DummyModuleName');
+			$route->get('/create', 'DummyClassResourceController@create')->name('admin.DummyModuleName.create');
+			$route->post('/create', 'DummyClassResourceController@store');
+			$route->get('/edit/{id}', 'DummyClassResourceController@edit')->name('admin.DummyModuleName.edit');
+			$route->post('/edit/{id}', 'DummyClassResourceController@update');
+			$route->get('delete/{id}', 'DummyClassResourceController@delete')->name('admin.DummyModuleName.delete');
+		});
+	});
+});
